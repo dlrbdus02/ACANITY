@@ -37,8 +37,12 @@
 
 <div id="list_box2">
 	<div id="list_box2_sub1">
-	<table>
-	<tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일</th><th>조회수</th></tr>
+	<table width="100%" id="list_table1">
+	<tr><th width="10%">번호</th>
+		<th width="40%">제목</th>
+		<th width="20%">작성자</th>
+		<th width="15%">작성일</th>
+		<th width="10%">조회수</th></tr>
 <% for (Post p : list){ %>
 	<tr><td><%= p.getpNo() %></td>
 		<td><%= p.getpTitle() %></td>
@@ -50,7 +54,7 @@
 	</div>
 	<div id="list_box2_sub2">
 		<div id="list_box2_sub2_1">
-			<input id="list_input1" type="text" name="title" placeholder="제목을 입력하세요." size="26">
+			<input id="list_input1" type="text" name="title" placeholder=" 제목을 입력하세요." size="26">
 			<button id="list_button1">검색</button>
 		</div>
 		<div id="list_box2_sub2_2">

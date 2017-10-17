@@ -51,14 +51,14 @@ body{
 	width: 98%;
 	height: 286px;
 	background-color: lightgray;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 #list_box2_sub2{
 	width: 98%;
 	height: 40px;
 	background-color: white;
-	margin-top: 10px;
+	margin-top: 8px;
 	text-align: center;
 }
 
@@ -70,15 +70,39 @@ body{
 #list_box2_sub2_2{
 	display: inline-block;
 	float: right;
+	position: fixed;
+	margin-left: 19%;
+}
+
+#list_table1{
+	text-align: center;
 }
 
 #list_input1{
-	
+	height: 22px;
+	/* font-size: 10pt; */
 }
 
 #list_button1{
-	
+	height: 28px;
+	width: 46px;
+	font-size: 10pt;
+	background-color: skyblue;
+	border-style: solid;
+	border-color: skyblue;
+	border-bottom-width: 4px;
 }
 
 #list_button2{
+	height: 28px;
+	width: 70px;
+	text-align: center;
+	font-size: 11pt;
+	font-weight: bold;
+	color: #ffffff;
+	background-color: skyblue;
+	border-style: solid;
+	border-color: skyblue;
+	border-bottom-width: 4px;
+	border-radius: 6px;
 }
