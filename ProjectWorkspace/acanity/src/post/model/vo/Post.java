@@ -18,6 +18,7 @@ public class Post implements java.io.Serializable {
    private String pId;      //작성자
    private int depth;      //깊이(0:자주묻는질문, 1:게시물, 2:댓글)
    private int refNo;      //참조글번호
+   private int cNo;      //모임번호      **자료공유게시판에서 필요
    
    private static final long serialVersionUID = 10000L;   //직렬화 아이디
    
@@ -25,7 +26,7 @@ public class Post implements java.io.Serializable {
    public Post(){}
 
    // Constructor : all
-   public Post(int pNo, String pCode, String pTitle, String pContent, int readCount, Date pDate, String pOpen,
+   public Post(int pNo, int cNo, String pCode, String pTitle, String pContent, int readCount, Date pDate, String pOpen,
          String pPw, String originalFileName, String renameFileName, String pId, int depth, int refNo) {
       super();
       this.pNo = pNo;
@@ -41,6 +42,7 @@ public class Post implements java.io.Serializable {
       this.pId = pId;
       this.depth = depth;
       this.refNo = refNo;
+      this.cNo = cNo;
    }
 
    // Getter & Setter
@@ -147,10 +149,18 @@ public class Post implements java.io.Serializable {
    public void setRefNo(int refNo) {
       this.refNo = refNo;
    }
+
+   public int getcNo() {
+      return cNo;
+   }
    
+   public void setcNo(int cNo){
+      this.cNo = cNo;
+   }
+
    @Override
    public String toString(){
-      return pNo + ", " + pCode + ", " + pTitle + ", " + pContent + ", " + readCount + ", " +
+      return pNo + ", " + cNo + ", "+ pCode + ", " + pTitle + ", " + pContent + ", " + readCount + ", " +
             pDate + ", " + pOpen + ", " + pPw + ", " + originalFileName + ", " + renameFileName + ", " +
             pId + ", " + depth + ", " + refNo;
    }

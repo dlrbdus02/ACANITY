@@ -137,6 +137,34 @@ public class MemberDao {
 	}
 
 	
-
+	/*//아이디 중복 체크 메서드
+	public int checkId(Connection con, String userid) throws Exception{
+		
+		
+		PreparedStatement pstmt = null;
+		
+		int re = 0;
+		
+		String query = "select * from member where m_id=? ";
+		try{
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, userid);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				re = 1;
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+			close(con);
+		}
+		
+		return re;
+	}
+*/
 
 }

@@ -23,9 +23,9 @@
 					<%} %>
 					<li><a title="board" href="#">모임</a></li>
 					<li><a title="post" href="#">모임게시판</a>
-					<li><a title="mypage" href="#">마이페이지</a></li>
+					<li><a title="mypage" href="/acanity/views/mypage/mypageMain.jsp">마이페이지</a></li>
 					<li><a title="qna" href="#">Q&A</a></li>
-					<li><a href="/acanity/page.html">소개</a></li>
+					<li><a href="/acanity/introduce.html">소개</a></li>
 				</ul>
 				</nav>
 			</div>

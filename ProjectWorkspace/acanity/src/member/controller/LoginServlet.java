@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 		//로그인 요청 처리용 컨트롤러
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		
+	
 		String memberId = request.getParameter("m_id");
 		String memberPwd = request.getParameter("m_pw");
 		

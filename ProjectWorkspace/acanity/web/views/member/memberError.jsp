@@ -7,6 +7,6 @@
 <title>memberError</title>
 </head>
 <body>
-
+Error 삐이이익!
 </body>
 </html>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>Acanity - KH Community</title>
+<script type="text/javascript" src="httpRequest.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">

@@ -13,7 +13,7 @@ public class MemberService {
 		Connection con = getConnection();
 		Member member = new MemberDao().selectMember(con, memberId, memberPwd);
 		close(con);
-		
+
 		return member;
 	}
 
