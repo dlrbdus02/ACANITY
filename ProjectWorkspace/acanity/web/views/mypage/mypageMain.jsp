@@ -4,7 +4,7 @@
 <!-- navbar -->
 <%@ include file="/header.jsp"%>
 <br>
-여기는 마이페이지 영역이다 오바.
+여기는 마이페이지 영역이다 오바.master merge 테스트
 <ul>
 	<li><a href="#">나의모임현황</a></li>
 	<li><a href="#">회원정보변경</a></li>
