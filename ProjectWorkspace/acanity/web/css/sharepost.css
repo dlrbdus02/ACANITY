@@ -1,0 +1,84 @@
+@CHARSET "UTF-8";
+
+body{
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+#list_box1{
+	width: 100%;
+	height: 55px;
+	background-color: skyblue;
+	display: block;
+}
+
+#list_box1_sub1{
+	text-align: left;
+	font-size: 18pt;
+	font-weight: bold;
+	color: #176c55;
+	margin: 10px 0px 0px 2%;
+	display: inline-block;
+	float: left;
+}
+
+#list_box1_sub1>span{
+	color: #ffffff;
+}
+
+#list_box1_sub2{
+	font-size: 10pt;
+	color: #176c55;
+	float: right;
+	display: inline-block;
+	margin: 30px 1% 0px 0px;
+}
+
+#list_box2{
+	width: 98%;
+	height: 345px;
+	background-color: pink;
+	text-align: left;
+	color: #176c55;
+	font-size: 12pt;
+	display: block;
+	padding-top: 10px;
+	padding-left: 2%;
+}
+
+#list_box2_sub1{
+	width: 98%;
+	height: 286px;
+	background-color: lightgray;
+	overflow: scroll;
+}
+
+#list_box2_sub2{
+	width: 98%;
+	height: 40px;
+	background-color: white;
+	margin-top: 10px;
+	text-align: center;
+}
+
+#list_box2_sub2_1{
+	display: inline-block;
+	margin-left: 30px;
+}
+
+#list_box2_sub2_2{
+	display: inline-block;
+	float: right;
+}
+
+#list_input1{
+	
+}
+
+#list_button1{
+	
+}
+
+#list_button2{
+}
