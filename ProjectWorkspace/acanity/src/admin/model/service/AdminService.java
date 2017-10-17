@@ -9,6 +9,7 @@ import History.model.vo.History;
 import admin.model.dao.AdminDao;
 import community.model.vo.Community;
 import member.model.vo.Member;
+import post.model.vo.Post;
 
 public class AdminService {
 
@@ -243,6 +244,26 @@ public class AdminService {
 		close(con);
 		
 		return memberList;
+	}
+
+	// 전체 QnA 게시글 출력
+	public ArrayList<Post> qnaAll() {
+		Connection con = getConnection();
+		ArrayList<Post> qnaList = new AdminDao().qnaAll(con);
+		
+		close(con);
+		
+		return qnaList;
+	}
+
+	// QnA 게시글 수
+	public int qnaCount() {
+		Connection con = getConnection();
+		int result = new AdminDao().qnaCount(con);
+		
+		close(con);
+		
+		return result;
 	}
 
 }

@@ -9,9 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import History.model.vo.History;
-import admin.controller.CommunityListServlet;
+import admin.controller.adCommunityListServlet;
 import community.model.vo.Community;
 import member.model.vo.Member;
+import post.model.vo.Post;
 
 public class AdminDao {
 	
@@ -186,11 +187,11 @@ public class AdminDao {
 				
 				while(rs.next()) {
 					community = new Community();
-					community.setcNo(rs.getInt("c_no"));
-					community.setcCategory(rs.getString("c_category"));
-					community.setcName(rs.getString("c_name"));
-					community.setcId(rs.getString("c_id"));
-					community.setcStartDate(rs.getDate("c_j_date")); // 음 이거 잘못됬어.. 가입날짜를 시작날짜로 넣어서 해결했는데 해결 방법 고민해보장.
+					community.setCommunityNo(rs.getInt("c_no"));
+					community.setCommunityCategory(rs.getString("c_category"));
+					community.setCommunityName(rs.getString("c_name"));
+					community.setCommunityId(rs.getString("c_id"));
+					community.setCommunityStartDate(rs.getDate("c_j_date")); // 음 이거 잘못됬어.. 가입날짜를 시작날짜로 넣어서 해결했는데 해결 방법 고민해보장.
 					communityList.add(community);
 				}
 			}
@@ -337,11 +338,11 @@ public class AdminDao {
 			
 			while (rs.next()) {
 				Community community = new Community();
-				community.setcNo(rs.getInt("c_no"));
-				community.setcCategory(rs.getString("c_category"));
-				community.setcName(rs.getString("c_name"));
-				community.setcClass(rs.getString("c_class"));
-				community.setcTime(rs.getString("c_time"));
+				community.setCommunityNo(rs.getInt("c_no"));
+				community.setCommunityCategory(rs.getString("c_category"));
+				community.setCommunityName(rs.getString("c_name"));
+				community.setCommunityClass(rs.getString("c_class"));
+				community.setCommunityTime(rs.getString("c_time"));
 				communityList.add(community);
 			}
 		} catch (Exception e) {
@@ -368,14 +369,14 @@ public class AdminDao {
 
 			while (rs.next()) {
 				community = new Community();
-				community.setcNo(rs.getInt("c_no"));
-				community.setcCategory(rs.getString("c_category"));
-				community.setcName(rs.getString("c_name"));
-				community.setcClass(rs.getString("c_class"));
-				community.setcTime(rs.getString("c_time"));
-				community.setcImgurl(rs.getString("c_imgurl"));
-				community.setcContent(rs.getString("c_content"));
-				community.setcId(rs.getString("c_id"));
+				community.setCommunityNo(rs.getInt("c_no"));
+				community.setCommunityCategory(rs.getString("c_category"));
+				community.setCommunityName(rs.getString("c_name"));
+				community.setCommunityClass(rs.getString("c_class"));
+				community.setCommunityTime(rs.getString("c_time"));
+				community.setCommunityImgUrl(rs.getString("c_imgurl"));
+				community.setCommunityContent(rs.getString("c_content"));
+				community.setCommunityId(rs.getString("c_id"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -616,14 +617,14 @@ public class AdminDao {
 
 			while (rs.next()) {
 				Community community = new Community();
-				community.setcNo(rs.getInt("c_no"));
-				community.setcCategory(rs.getString("c_category"));
-				community.setcName(rs.getString("c_name"));
-				community.setcClass(rs.getString("c_class"));
-				community.setcTime(rs.getString("c_time"));
-				community.setcEndDate(rs.getDate("c_end_date"));
-				community.setcImgurl(rs.getString("c_imgurl"));
-				community.setcLimit(rs.getInt("c_limit"));
+				community.setCommunityNo(rs.getInt("c_no"));
+				community.setCommunityCategory(rs.getString("c_category"));
+				community.setCommunityName(rs.getString("c_name"));
+				community.setCommunityClass(rs.getString("c_class"));
+				community.setCommunityTime(rs.getString("c_time"));
+				community.setCommunityEndDate(rs.getDate("c_end_date"));
+				community.setCommunityImgUrl(rs.getString("c_imgurl"));
+				community.setCommunityLimit(rs.getInt("c_limit"));
 				communityList.add(community);
 			}
 		} catch (Exception e) {
@@ -668,6 +669,53 @@ public class AdminDao {
 		}
 		
 		return memberList;
+	}
+	
+	// 전체 QnA 게시글 출력
+	public ArrayList<Post> qnaAll(Connection con) {
+		ArrayList<Post> qnaList = new ArrayList<Post>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		String sql = "select * from post where p_code = 1";
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				Post qna = new Post();
+				
+				qnaList.add(qna);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		
+		return qnaList;
+	}
+
+	// QnA 게시글 수
+	public int qnaCount(Connection con) {
+		int result = 0;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String sql = "select count(*) from post where p_code = 1";
+		
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			rs.next();
+			result = rs.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(stmt);
+		}
+		return result;
 	}
 
 	
