@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import History.model.vo.History;
-import admin.controller.CommunityListServlet;
+import admin.controller.adCommunityListServlet;
 import community.model.vo.Community;
 import member.model.vo.Member;
 
