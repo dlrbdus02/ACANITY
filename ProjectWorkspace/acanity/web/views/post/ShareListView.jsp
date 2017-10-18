@@ -36,21 +36,22 @@
 </div>
 
 <div id="list_box2">
+	<div id="list_box2_sub0"></div>
 	<div id="list_box2_sub1">
-	<table width="100%" id="list_table1">
-	<tr><th width="10%">번호</th>
-		<th width="40%">제목</th>
-		<th width="20%">작성자</th>
-		<th width="15%">작성일</th>
-		<th width="10%">조회수</th></tr>
+		<table id="list_table1">
+		<tr><th width="10%">번호</th>
+			<th width="40%">제목</th>
+			<th width="20%">작성자</th>
+			<th width="15%">작성일</th>
+			<th width="10%">조회수</th></tr>
 <% for (Post p : list){ %>
-	<tr><td><%= p.getpNo() %></td>
-		<td><%= p.getpTitle() %></td>
-		<td><%= p.getpId() %></td>
-		<td><%= p.getpDate() %></td>
-		<td><%= p.getReadCount() %></td></tr>
+		<tr><td><%= p.getpNo() %></td>
+			<td><%= p.getpTitle() %></td>
+			<td><%= p.getpId() %></td>
+			<td><%= p.getpDate() %></td>
+			<td><%= p.getReadCount() %></td></tr>
 <% }%>
-	</table>
+		</table>
 	</div>
 	<div id="list_box2_sub2">
 		<div id="list_box2_sub2_1">

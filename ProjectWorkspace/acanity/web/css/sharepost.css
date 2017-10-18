@@ -47,9 +47,15 @@ body{
 	padding-left: 2%;
 }
 
+#list_box2_sub0{
+	width: 98%;
+	height: 40px;
+	background-color: yellow;
+}
+
 #list_box2_sub1{
 	width: 98%;
-	height: 286px;
+	height: 246px;
 	background-color: lightgray;
 	overflow-y: scroll;
 }
@@ -75,6 +81,7 @@ body{
 }
 
 #list_table1{
+	width: 100%;
 	text-align: center;
 }
 
