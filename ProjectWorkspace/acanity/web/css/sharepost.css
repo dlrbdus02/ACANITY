@@ -155,3 +155,17 @@ body{
 	border-bottom-width: 4px;
 	border-radius: 6px;
 }
+
+#write_button1{
+	height: 40px;
+	width: 130px;
+	text-align: center;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #ffffff;
+	background-color: #0054a8;
+	border-style: solid;
+	border-color: #0054a8;
+	border-bottom-width: 4px;
+	border-radius: 6px;
+}

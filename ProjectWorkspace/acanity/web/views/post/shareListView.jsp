@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/acanity/css/sharepost.css">
 <script type="text/javascript">
 	function postWrite(){
-		location.href = "shareWriteForm.jsp?cno=<%=cno%>";
+		location.href = "/acanity/views/post/shareWriteForm.jsp?cno=<%=cno%>";
 	}
 </script>
 </head>
