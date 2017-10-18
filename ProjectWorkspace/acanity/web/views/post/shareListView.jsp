@@ -1,30 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="member.model.vo.Member, community.model.vo.Community,
-				post.model.vo.Post, java.util.*" %>
+<%@ page import="member.model.vo.Member, post.model.vo.Post, java.util.*" %>
 <%
-	//가짜데이터
+	//가짜데이터(멤버는 세션)
 	Member member = new Member("아이디", "비밀번호", "이름", "A", "오전", "01091901099", "이메일");
-	Community community = new Community();
-	community.setCommunityName("모임명");
-	
-	ArrayList<Post> list = new ArrayList<Post>();
-	Post post1 = new Post(1, 2, "제목1", "내용1", 0, null, 0, "password", null, null, "작성자1", 1, 0, 1);
-	Post post2 = new Post(2, 2, "제목2", "내용2", 0, null, 0, "password", null, null, "작성자2", 1, 0, 1);
-	Post post3 = new Post(3, 2, "제목3", "내용3", 0, null, 0, "password", null, null, "작성자3", 1, 0, 1);
-	Post post4 = new Post(4, 2, "제목4", "내용4", 0, null, 0, "password", null, null, "작성자4", 1, 0, 1);
-	Post post5 = new Post(5, 2, "제목5", "내용5", 0, null, 0, "password", null, null, "작성자5", 1, 0, 1);
-	Post post6 = new Post(6, 2, "제목6", "내용6", 0, null, 0, "password", null, null, "작성자6", 1, 0, 1);
-	Post post7 = new Post(7, 2, "제목7", "내용7", 0, null, 0, "password", null, null, "작성자7", 1, 0, 1);
-	Post post8 = new Post(8, 2, "제목8", "내용8", 0, null, 0, "password", null, null, "작성자8", 1, 0, 1);
-	list.add(post1);
-	list.add(post2);
-	list.add(post3);
-	list.add(post4);
-	list.add(post5);
-	list.add(post6);
-	list.add(post7);
-	list.add(post8);
+	ArrayList<Post> list = (ArrayList<Post>)request.getAttribute("list");
 	
 %>
 <!DOCTYPE html>

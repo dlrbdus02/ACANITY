@@ -13,9 +13,9 @@ public class SharePostService {
    public SharePostService(){}
    
    // 전체 리스트 불러오기
-   public ArrayList<Post> selectList(){
+   public ArrayList<Post> selectList(int cno){
       Connection conn = getConnection();
-      ArrayList<Post> list = new SharePostDao().selectList(conn);
+      ArrayList<Post> list = new SharePostDao().selectList(conn, cno);
       close(conn);      
       return list;
    }

@@ -14,7 +14,10 @@
 		specs += ",top=" + top;
 		specs += ",toolbar=no,menubar=no,status=no,scrollbars=no,resizable=no";
 
-		window.open("shareListView.jsp", "자료공유방", specs);
+		//가짜데이터
+		var cno = 2;	//모임번호
+		
+		window.open("/acanity/splist?cno=" + cno, "자료공유방", specs);
 	}
 </script>
 </head>
