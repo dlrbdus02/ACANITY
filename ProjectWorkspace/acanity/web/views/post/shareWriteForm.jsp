@@ -45,7 +45,7 @@
 	</div>
 	<div id="list_box2_sub2">
 		<div id="list_box2_sub2_2">
-			<button type="submit" id=write_button1" style="cursor: pointer">SUBMIT</button>
+			<button type="submit" id="write_button1" style="cursor: pointer">SUBMIT</button>
 		</div>
 	</div>
 </div>
