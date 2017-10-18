@@ -14,6 +14,9 @@
 	Post post3 = new Post(3, 2, "제목3", "내용3", 0, null, 0, "password", null, null, "작성자3", 1, 0, 1);
 	Post post4 = new Post(4, 2, "제목4", "내용4", 0, null, 0, "password", null, null, "작성자4", 1, 0, 1);
 	Post post5 = new Post(5, 2, "제목5", "내용5", 0, null, 0, "password", null, null, "작성자5", 1, 0, 1);
+	Post post6 = new Post(6, 2, "제목6", "내용6", 0, null, 0, "password", null, null, "작성자6", 1, 0, 1);
+	Post post7 = new Post(7, 2, "제목7", "내용7", 0, null, 0, "password", null, null, "작성자7", 1, 0, 1);
+	Post post8 = new Post(8, 2, "제목8", "내용8", 0, null, 0, "password", null, null, "작성자8", 1, 0, 1);
 	list.add(post1);
 	list.add(post2);
 	list.add(post3);
@@ -30,7 +33,7 @@
 </head>
 <body>
 <div id="list_box1">
-	<div id="list_box1_sub1"><span><%= community.getCommunityName() %></span>의 자료공유방</div>
+	<div id="list_box1_sub1">자료공유방</div>
 	<div id="list_box1_sub2"><%= member.getmId() %>님 환영합니다.</div>
 </div>
 
@@ -45,7 +48,7 @@
 		</table>
 	</div>
 	<div id="list_box2_sub1">
-		<table id="list_table2" border="1" cellspacing="0">
+		<table id="list_table2" border="1px" cellspacing="0">
 <% for (Post p : list){ %>
 		<tr><td width="8%"><%= p.getpNo() %></td>
 			<td width="46%" style="text-align: left; padding-left: 6px"><%= p.getpTitle() %></td>
