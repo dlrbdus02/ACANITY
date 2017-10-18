@@ -22,6 +22,9 @@
 	list.add(post3);
 	list.add(post4);
 	list.add(post5);
+	list.add(post6);
+	list.add(post7);
+	list.add(post8);
 	
 %>
 <!DOCTYPE html>
@@ -34,7 +37,7 @@
 <body>
 <div id="list_box1">
 	<div id="list_box1_sub1">자료공유방</div>
-	<div id="list_box1_sub2"><%= member.getmId() %>님 환영합니다.</div>
+	<div id="list_box1_sub2"><b><%= member.getmId() %></b>님 환영합니다.</div>
 </div>
 
 <div id="list_box2">
@@ -47,8 +50,9 @@
 			<td width="9%">조회수</td></tr>
 		</table>
 	</div>
+	<!-- border="1" bordercolor="#b8c7d3" -->
 	<div id="list_box2_sub1">
-		<table id="list_table2" border="1px" cellspacing="0">
+		<table id="list_table2" cellspacing="0" style="border-collapse : collapse;">
 <% for (Post p : list){ %>
 		<tr><td width="8%"><%= p.getpNo() %></td>
 			<td width="46%" style="text-align: left; padding-left: 6px"><%= p.getpTitle() %></td>
