@@ -12,11 +12,11 @@
 <meta charset="UTF-8">
 <title>shareListView</title>
 <link rel="stylesheet" href="/acanity/css/sharepost.css">
-<script type="text/javascript">
+<%-- <script type="text/javascript">
 	function postWrite(){
 		location.href = "shareWriteForm.jsp?cno=<%=cno%>";
 	}
-</script>
+</script> --%>
 </head>
 <body>
 <div id="list_box1">
