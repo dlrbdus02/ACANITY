@@ -15,7 +15,11 @@
 				<!-- navigation -->
 				<nav class="pull-right nav-collapse collapse">
 				<ul id="menu-main" class="nav">
+					<% if(member == null){ %>
 					<li><a title="signup" href="/acanity/views/member/enrollForm.jsp">Sign Up</a></li>
+					<%}else{ %>
+					<%= member.getmName() %>님 환영합니다
+					<%} %>
 					<% if(member == null){ %>
 					<li><a title="signin" href="/acanity/views/member/Login.jsp">Sign In</a></li>
 					<%}else{ %>

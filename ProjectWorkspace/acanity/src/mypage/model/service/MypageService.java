@@ -48,4 +48,13 @@ public class MypageService {
 			close(con);
 			return result;
 		}
+
+		public Member selectMember(String mid) {
+			
+			Connection con = getConnection();
+			Member member = new MypageDao().selectMember(con, mid);
+			close(con);
+			
+			return member;
+		}
 }
