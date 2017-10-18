@@ -5,7 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>shareError</title>
-<link rel="stylesheet" href="../../css/sharepost.css">
+<link rel="stylesheet" href="sharepost.css">
+<script type="text/javascript">
+	function pageBack(){
+		history.back();
+	}
+
+</script>
 </head>
 <body>
 <div id="list_box1">
@@ -13,10 +19,12 @@
 </div>
 
 <div id="list_box2">
-		<span id="error_span1">SharePost 서비스 에러 발생</span>
+		<span id="error_span1">자료공유게시판 서비스 에러</span>
+		<br>
 		<span id="error_span2"> <%= request.getAttribute("message") %></span>
-	<div id="list_box2_sub2">
-		<button id="error_button1">이전 페이지로</button>
+	<div id="error_box1">
+		<br>
+		<button id="error_button1" href="pageBack();">이전 페이지로</button>
 	</div>
 </div>
 
