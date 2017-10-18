@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="member.model.vo.Member, post.model.vo.Post, java.util.*" %>
 <%
-	Member member = (Member)session.getAttribute("member");
+	//Member member = (Member)session.getAttribute("member");
 	int cno = Integer.parseInt(request.getParameter("cno"));
 	
 %>
@@ -21,7 +21,7 @@
 <body>
 <div id="list_box1">
 	<div id="list_box1_sub1">자료공유방</div>
-	<div id="list_box1_sub2"><b><%= member.getmId() %></b>님 환영합니다.</div>
+	<div id="list_box1_sub2"><b><%-- <%= member.getmId() %> --%></b>님 환영합니다.</div>
 </div>
 
 <div id="list_box2">
