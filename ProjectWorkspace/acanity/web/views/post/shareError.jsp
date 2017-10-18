@@ -5,13 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>shareError</title>
-<link rel="stylesheet" href="sharepost.css">
-<script type="text/javascript">
-	function pageBack(){
-		history.back();
-	}
-
-</script>
+<link rel="stylesheet" href="../../sharepost.css">
 </head>
 <body>
 <div id="list_box1">
@@ -24,7 +18,7 @@
 		<span id="error_span2"> <%= request.getAttribute("message") %></span>
 	<div id="error_box1">
 		<br>
-		<button id="error_button1" href="pageBack();">이전 페이지로</button>
+		<button id="error_button1" onclick="javascript:history.back();" style="cursor: pointer">이전 페이지로</button>
 	</div>
 </div>
 
