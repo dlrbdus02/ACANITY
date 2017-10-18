@@ -31,7 +31,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ShareListView</title>
+<title>shareListView</title>
 <link rel="stylesheet" href="../../css/sharepost.css">
 </head>
 <body>
@@ -50,7 +50,6 @@
 			<td width="9%">조회수</td></tr>
 		</table>
 	</div>
-	<!-- border="1" bordercolor="#b8c7d3" -->
 	<div id="list_box2_sub1">
 		<table id="list_table2" cellspacing="0" style="border-collapse : collapse;">
 <% for (Post p : list){ %>

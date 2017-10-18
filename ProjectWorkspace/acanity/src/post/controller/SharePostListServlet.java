@@ -3,6 +3,7 @@ package post.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +23,17 @@ public class SharePostListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 파일 공유 게시판 : 게시글 리스트 보기 처리용 컨트롤러
-		
+		response.setContentType("text/html; charset=utf-8");
 		ArrayList<Post> list = new SharePostService().selectList();
+		RequestDispatcher view = null;
+		if (list != null){
+			view = request.getRequestDispatcher("views/post/shareListView.jsp");
+			request.setAttribute("list", list);
+			view.forward(request, response);
+		}else{
+			view = request.getRequestDispatcher("views/post/shareError.jsp");
+		}
+		
 		
 	}
 
