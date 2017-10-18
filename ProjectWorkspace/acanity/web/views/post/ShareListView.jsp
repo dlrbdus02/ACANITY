@@ -32,7 +32,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ShareListView</title>
-<link rel="stylesheet" href="sharepost.css">
+<link rel="stylesheet" href="../../css/sharepost.css">
 </head>
 <body>
 <div id="list_box1">
