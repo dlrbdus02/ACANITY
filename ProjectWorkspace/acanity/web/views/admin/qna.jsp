@@ -3,7 +3,7 @@
 <%
 	ArrayList<Post> qnaList = (ArrayList<Post>)request.getAttribute("qnaList");
 	int qnaCount = (int)request.getAttribute("qnaCount");
-	String pageName = "QnA";
+	String pageName = "Q & A";
 %>
 <!doctype html>
 <html lang="ko">
@@ -15,28 +15,34 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">QnA List</h4>
+                                <h4 class="title">Q & A List</h4>
                                 <p class="category">Total : <%= qnaCount %></p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-striped" style="text-align: center">
                                     <thead>
                                         <th style="text-align: center">No</th>
-                                    	<th style="text-align: center">Category</th>
-                                    	<th style="text-align: center">Name</th>
-                                    	<th style="text-align: center">Class</th>
-                                    	<th style="text-align: center">Time</th>
+                                    	<th style="text-align: center">Title</th>
+                                    	<th style="text-align: center">Writer</th>
+                                    	<th style="text-align: center">Reply</th>
+                                    	<th style="text-align: center">Hit</th>
+                                    	<th style="text-align: center">Date</th>
                                     </thead>
                                     <tbody>
-                                   <%-- 	<% for(Community community : communityList){ %>
+                                    <% for(Post qna : qnaList){ %>
                                    		<tr>
                                    			<td>1</td>
-                                   			<td><%= community.getCommunityCategory() %></td>
-                                   			<td style="text-align: left"><a href="/acanity/admin/community/detail?no=<%= community.getCommunityNo() %>"><%= community.getCommunityName() %></a></td>
-                                   			<td><%= community.getCommunityClass() %></td>
-                                   			<td><%= community.getCommunityTime() %></td>
+                                   			<td style="text-align: left"><a href="/acanity/admin/qna/detail?no=<%= qna.getpNo() %>"><%= qna.getpTitle() %></a></td>
+                                   			<td><%= qna.getpId() %></td>
+											<% if(qna.getDepth() % 2 == 1) {%>
+                                   			<td><i class="fa fa-times" aria-hidden="true"></i></td>
+                                   			<% } else { %>
+                                   			<td><i class="fa fa-check" aria-hidden="true"></i></td>
+                                   			<% } %>
+                                   			<td><%= qna.getReadCount() %></td>
+                                   			<td><%= qna.getpDate() %></td>
                                    		</tr>
-                                   	<%} %> --%>
+                                   	<%} %>
                                     </tbody>
                                 </table>
                             </div>

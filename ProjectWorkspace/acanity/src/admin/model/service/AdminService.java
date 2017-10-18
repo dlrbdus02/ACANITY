@@ -266,4 +266,27 @@ public class AdminService {
 		return result;
 	}
 
+	// QnA 상세보기
+	public ArrayList<Post> qnaDetail(int no) {
+		Connection con = getConnection();
+		ArrayList<Post> qnaList = new AdminDao().qnaDetail(con, no);
+		
+		close(con);
+		
+		return qnaList;
+	}
+
+	// QnA 조회수 증가
+	public void qnaRead(int no) {
+		Connection con = getConnection();
+		int result = new AdminDao().qnaRead(con, no);
+		
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+	}
+	
+	
+
 }

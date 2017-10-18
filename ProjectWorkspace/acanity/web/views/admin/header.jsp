@@ -77,10 +77,14 @@
                         <p>Community</p>
                     </a>
                 </li>
-                <li>
-                    <a href="typography.html">
-                        <i class="ti-text"></i>
-                        <p>Typography</p>
+            <% if(pageName == "Q & A" || pageName == "Q & A Detail") {%>
+                <li class="active">
+             <%} else{ %>
+            	 <li>
+             <% } %>
+                    <a href="/acanity/admin/qna">
+                        <i class="fa fa-question" aria-hidden="true"></i>
+                        <p>Q & A</p>
                     </a>
                 </li>
                 <li>

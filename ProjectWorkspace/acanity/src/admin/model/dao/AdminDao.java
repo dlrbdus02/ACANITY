@@ -676,14 +676,19 @@ public class AdminDao {
 		ArrayList<Post> qnaList = new ArrayList<Post>();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from post where p_code = 1";
+		String sql = "select * from post where p_code = 1 and (mod(p_depth,2) = 1) order by p_refno desc, p_depth asc";
 		
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
-			
 			while (rs.next()) {
 				Post qna = new Post();
+				qna.setDepth(rs.getInt("p_depth"));
+				qna.setpNo(rs.getInt("p_no"));
+				qna.setpTitle(rs.getString("p_title"));
+				qna.setReadCount(rs.getInt("p_readcount"));
+				qna.setpDate(rs.getDate("p_date"));
+				qna.setpId(rs.getString("p_id"));
 				
 				qnaList.add(qna);
 			}
@@ -715,6 +720,64 @@ public class AdminDao {
 			close(rs);
 			close(stmt);
 		}
+		return result;
+	}
+
+	// QnA 상세보기
+	public ArrayList<Post> qnaDetail(Connection con, int no) {
+		ArrayList<Post> qnaList = new ArrayList<Post>();
+		Post qna = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from post where p_refno = ? order by p_depth asc";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				qna = new Post();
+				qna.setDepth(rs.getInt("p_depth"));
+				qna.setOriginalFileName(rs.getString("p_originalfilename"));
+				qna.setpCode(rs.getInt("p_code"));
+				qna.setpContent(rs.getString("p_content"));
+				qna.setpDate(rs.getDate("p_date"));
+				qna.setpId(rs.getString("p_id"));
+				qna.setpNo(rs.getInt("p_no"));
+				qna.setpOpen(rs.getInt("p_open"));
+				qna.setpTitle(rs.getString("p_title"));
+				qna.setReadCount(rs.getInt("p_readcount"));
+				qna.setRefNo(rs.getInt("p_refno"));
+				qna.setRenameFileName(rs.getString("p_renamefilename"));
+				
+				qnaList.add(qna);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return qnaList;
+	}
+
+	// QnA 조회수 증가
+	public int qnaRead(Connection con, int no) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = "update post set p_readcount = p_readcount + 1 where p_no = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 
