@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ page import="member.model.vo.Member, community.model.vo.Community,
 				post.model.vo.Post, java.util.*" %>
-
 <%
 	//가짜데이터
 	Member member = new Member("아이디", "비밀번호", "이름", "A", "오전", "01091901099", "이메일");
@@ -27,7 +26,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ShareListView</title>
-<link rel="stylesheet" href="../../css/sharepost.css">
+<link rel="stylesheet" href="sharepost.css">
 </head>
 <body>
 <div id="list_box1">
@@ -36,20 +35,23 @@
 </div>
 
 <div id="list_box2">
-	<div id="list_box2_sub0"></div>
-	<div id="list_box2_sub1">
+	<div id="list_box2_sub0">
 		<table id="list_table1">
-		<tr><th width="10%">번호</th>
-			<th width="40%">제목</th>
-			<th width="20%">작성자</th>
-			<th width="15%">작성일</th>
-			<th width="10%">조회수</th></tr>
+		<tr><td width="8%">번호</td>
+			<td width="46%">제목</td>
+			<td width="15%">작성자</td>
+			<td width="17%">작성일</td>
+			<td width="9%">조회수</td></tr>
+		</table>
+	</div>
+	<div id="list_box2_sub1">
+		<table id="list_table2" border="1" cellspacing="0">
 <% for (Post p : list){ %>
-		<tr><td><%= p.getpNo() %></td>
-			<td><%= p.getpTitle() %></td>
-			<td><%= p.getpId() %></td>
-			<td><%= p.getpDate() %></td>
-			<td><%= p.getReadCount() %></td></tr>
+		<tr><td width="8%"><%= p.getpNo() %></td>
+			<td width="46%" style="text-align: left; padding-left: 6px"><%= p.getpTitle() %></td>
+			<td width="15%"><%= p.getpId() %></td>
+			<td width="17%"><%= p.getpDate() %></td>
+			<td width="9%"><%= p.getReadCount() %></td></tr>
 <% }%>
 		</table>
 	</div>

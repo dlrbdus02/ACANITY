@@ -49,8 +49,11 @@ body{
 
 #list_box2_sub0{
 	width: 98%;
-	height: 40px;
-	background-color: yellow;
+	height: 36px;
+	padding-left: 2px;
+	background-color: green;
+	color: white;
+	font-size: 11pt;
 }
 
 #list_box2_sub1{
@@ -81,8 +84,18 @@ body{
 }
 
 #list_table1{
+	width: 97%;
+	text-align: center;
+}
+
+#list_table2{
 	width: 100%;
 	text-align: center;
+	background-color: skyblue;
+}
+
+td {
+	height: 32px;
 }
 
 #list_input1{
@@ -94,7 +107,7 @@ body{
 	height: 28px;
 	width: 46px;
 	font-size: 10pt;
-	background-color: yellow;
+	background-color: skyblue;
 	border-style: solid;
 	border-color: skyblue;
 	border-bottom-width: 4px;
