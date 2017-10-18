@@ -4,7 +4,6 @@
 <%
 	Member member = (Member)session.getAttribute("member");
 	int cno = Integer.parseInt(request.getParameter("cno"));
-	ArrayList<Post> list = (ArrayList<Post>)request.getAttribute("list");
 	
 %>
 <!DOCTYPE html>
@@ -37,13 +36,11 @@
 	</div>
 	<div id="list_box2_sub1">
 		<table id="list_table2" cellspacing="0" style="border-collapse : collapse;">
-<% for (Post p : list){ %>
-		<tr><td width="8%"><%= p.getpNo() %></td>
-			<td width="46%" style="text-align: left; padding-left: 6px"><%= p.getpTitle() %></td>
-			<td width="15%"><%= p.getpId() %></td>
-			<td width="17%"><%= p.getpDate() %></td>
-			<td width="9%"><%= p.getReadCount() %></td></tr>
-<% }%>
+		<tr><td width="8%"></td>
+			<td width="46%" style="text-align: left; padding-left: 6px"></td>
+			<td width="15%"></td>
+			<td width="17%"></td>
+			<td width="9%"></td></tr>
 		</table>
 	</div>
 	<div id="list_box2_sub2">

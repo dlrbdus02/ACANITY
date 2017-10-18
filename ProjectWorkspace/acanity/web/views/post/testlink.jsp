@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자료공유게시판 테스트</title>
 <script type="text/javascript">
 	function openWin(){
 		var width=720, height=391;
@@ -12,7 +15,7 @@
 		specs += ",height=" + height;
 		specs += ",left=" + left;
 		specs += ",top=" + top;
-		specs += ",toolbar=no,menubar=no,status=no,scrollbars=no,resizable=no";
+		specs += ",toolbar=no, channelmode=no, menubar=no, status=no, scrollbars=no, resizable=no";
 
 		//가짜데이터
 		var cno = 2;	//모임번호
@@ -22,7 +25,6 @@
 </script>
 </head>
 <body>
-
 <a href="javascript:openWin();">자료공유방 열기</a>
 <br>
 <a href="shareError.jsp">에러페이지 form</a>
