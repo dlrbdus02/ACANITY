@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-    import="java.util.*, community.model.vo.Community, History.model.vo.History, member.model.vo.Member"%>
+    import="java.util.*, community.model.vo.*, History.model.vo.History, member.model.vo.Member "%>
 <%
 	Community community = (Community)request.getAttribute("community");
 	ArrayList<History> meetingList = (ArrayList<History>)request.getAttribute("meetingList");
 	int memberCount = (int)request.getAttribute("memberCount");
 	int meetingCount = (int)request.getAttribute("meetingCount");
 	ArrayList<Member> memberList = (ArrayList<Member>)request.getAttribute("memberList");
+	ArrayList<Vote> voteList = (ArrayList<Vote>)request.getAttribute("voteList");
 	System.out.println(memberList);
 	String pageName = "Community Detail";
 %>
@@ -37,64 +38,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Member List</h4>
-                            </div>
-                            <div class="content">
-                                <ul class="list-unstyled team-members">
-                                	<% for(Member member : memberList){ %>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-xs-3">
-                                                    	<%= member.getmId() %>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        <%= member.getmEmail() 	%> 가입
-                                                    </div>
-                                                    <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><a href="/acanity/admin/member/detail?id=<%= member.getmId() %>"><i class="fa fa-envelope"></i></a></btn>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <% } %>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-xs-3">
-                                                        <div class="avatar">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        Creative Tim
-                                                        <br />
-                                                        <span class="text-success"><small>Available</small></span>
-                                                    </div>
-
-                                                    <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-xs-3">
-                                                        <div class="avatar">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-6">
-                                                        Flume
-                                                        <br />
-                                                        <span class="text-danger"><small>Busy</small></span>
-                                                    </div>
-
-                                                    <div class="col-xs-3 text-right">
-                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="col-lg-8 col-md-7">
                         <div class="card">
@@ -191,6 +135,132 @@
 
 
                 </div>
+                
+                <div class="row">
+                <div class="col-md-3">
+                <div class="card">
+                            <div class="header">
+                                <h4 class="title">Member List</h4>
+                            </div>
+                            <div class="content">
+                                <ul class="list-unstyled team-members">
+                                	<% for(Member member : memberList){ %>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                    	<%= member.getmId() %>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        <%= member.getmEmail() 	%> 가입
+                                                    </div>
+                                                    <div class="col-xs-3 text-right">
+                                                        <btn class="btn btn-sm btn-success btn-icon"><a href="/acanity/admin/member/detail?id=<%= member.getmId() %>"><i class="fa fa-envelope"></i></a></btn>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <% } %>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <div class="avatar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        Creative Tim
+                                                        <br />
+                                                        <span class="text-success"><small>Available</small></span>
+                                                    </div>
+
+                                                    <div class="col-xs-3 text-right">
+                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <div class="avatar">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6">
+                                                        Flume
+                                                        <br />
+                                                        <span class="text-danger"><small>Busy</small></span>
+                                                    </div>
+
+                                                    <div class="col-xs-3 text-right">
+                                                        <btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                            </div>
+                            </div>
+                        </div>
+<div class="col-md-5">
+                <div class="card">
+                            <div class="header">
+                                <h4 class="title">Vote List</h4>
+                            </div>
+                            <div class="content">
+                                <ul class="list-unstyled team-members">
+                                <% for(Vote vote : voteList) { %>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-4" style="padding-top: 8px;">
+                                                    	<%= vote.getVoteTitle() %>
+                                                    </div>
+                                                    <div class="col-xs-5" style="padding-top: 8px;">
+                                                    	<%= vote.getVoteStartDate() %> ~ <%= vote.getVoteEndDate() %>
+                                                    </div>
+                                                    <div class="col-xs-1" style="padding-top: 8px; padding-right: 0px">
+                                                    	<%= vote.getVoteResultNo() %>명
+                                                    </div>
+                                                    <div class="col-xs-2 text-right">
+                                                    	<btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-4" style="padding-top: 8px;">
+                                                    	<%= vote.getVoteTitle() %>
+                                                    </div>
+                                                    <div class="col-xs-5" style="padding-top: 8px;">
+                                                    	<%= vote.getVoteStartDate() %> ~ <%= vote.getVoteEndDate() %>
+                                                    </div>
+                                                    <div class="col-xs-1" style="padding-top: 8px; padding-right: 0px">
+                                                    	<%= vote.getVoteResultNo() %>명
+                                                    </div>
+                                                    <div class="col-xs-2 text-right">
+                                                    	<btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-4" style="padding-top: 8px;">
+                                                    	<%= vote.getVoteTitle() %>
+                                                    </div>
+                                                    <div class="col-xs-5" style="padding-top: 8px;">
+                                                    	<%= vote.getVoteStartDate() %> ~ <%= vote.getVoteEndDate() %>
+                                                    </div>
+                                                    <div class="col-xs-1" style="padding-top: 8px; padding-right: 0px">
+                                                    	<%= vote.getVoteResultNo() %>명
+                                                    </div>
+                                                    <div class="col-xs-2 text-right">
+                                                    	<btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                 <% } %>
+                                        </ul>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        
             </div>
         </div>
 <%@ include file="footer.jsp" %>

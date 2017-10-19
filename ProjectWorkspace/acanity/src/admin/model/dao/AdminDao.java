@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import History.model.vo.History;
 import admin.controller.adCommunityListServlet;
 import community.model.vo.Community;
+import community.model.vo.Vote;
 import member.model.vo.Member;
 import post.model.vo.Post;
 
@@ -676,7 +677,25 @@ public class AdminDao {
 		ArrayList<Post> qnaList = new ArrayList<Post>();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select * from post where p_code = 1 and (mod(p_depth,2) = 1) order by p_refno desc, p_depth asc";
+		String sql = "SELECT P_NO,  " + 
+					 "       P_DEPTH,  " + 
+					 "       P_TITLE,  " + 
+					 "       P_READCOUNT,  " + 
+					 "       P_DATE,  " + 
+					 "       P_ID,  " + 
+					 "       CASE  " + 
+					 "         WHEN EXISTS (SELECT *  " + 
+					 "                      FROM   POST B  " + 
+					 "                      WHERE  A.P_REFNO = B.P_REFNO  " + 
+					 "                             AND MOD((SELECT MAX(C.P_DEPTH)  " + 
+					 "                                      FROM   POST C  " + 
+					 "                                      WHERE  C.P_REFNO = B.P_REFNO), 2) = 1)  " + 
+					 "       THEN 'N'  " + 
+					 "         ELSE 'Y'  " + 
+					 "       END reply  " + 
+					 "FROM   POST A  " + 
+					 "WHERE  A.P_CODE = 1  " + 
+					 "       AND A.P_DEPTH = 1";
 		
 		try {
 			stmt = con.createStatement();
@@ -689,6 +708,7 @@ public class AdminDao {
 				qna.setReadCount(rs.getInt("p_readcount"));
 				qna.setpDate(rs.getDate("p_date"));
 				qna.setpId(rs.getString("p_id"));
+				qna.setOriginalFileName(rs.getString("reply")); // 답변이 달린 여부를 이걸로 대체... Y면 달렸고 N 이면 안달렸어
 				
 				qnaList.add(qna);
 			}
@@ -707,7 +727,7 @@ public class AdminDao {
 		int result = 0;
 		Statement stmt = null;
 		ResultSet rs = null;
-		String sql = "select count(*) from post where p_code = 1";
+		String sql = "select count(*) from post where p_code = 1 and p_depth = 1";
 		
 		try {
 			stmt = con.createStatement();
@@ -766,7 +786,7 @@ public class AdminDao {
 	public int qnaRead(Connection con, int no) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = "update post set p_readcount = p_readcount + 1 where p_no = ?";
+		String sql = "update post set p_readcount = p_readcount + 1 where p_refno = ?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -781,6 +801,69 @@ public class AdminDao {
 		return result;
 	}
 
+	// QnA 답변 등록
+	public void qnaInsert(Connection con, int no, String content) {
+		PreparedStatement pstmt = null;
+		String sql = "insert into post values((select max(p_no) + 1 from post), 1, (select p_title from post where p_no = ?), ?, "
+			       + "0, sysdate, (select p_open from post where p_no = ?), (select p_pw from post where p_no = ?), null, null, 'admin', "
+			       + "(select max(p_depth) + 1 from post where p_refno = ?), ?, null)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, no);
+			pstmt.setInt(4, no);
+			pstmt.setInt(5, no);
+			pstmt.setInt(6, no);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+	}
+
+	// 그룹에서 진행된 투표리스트 출력
+	public ArrayList<Vote> communityVoteAll(Connection con, int no) {
+		ArrayList<Vote> voteList = new ArrayList<Vote>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT DISTINCT V_NO,  " + 
+					 "                V_TITLE,  " + 
+					 "                V_END_DATE,  " + 
+					 "                V_START_DATE,  " + 
+					 "                (SELECT COUNT(*)  " + 
+					 "                 FROM   VOTERESULT VR  " + 
+					 "                 GROUP  BY VR_NO  " + 
+					 "                 HAVING V.V_NO = VR_NO) count  " + 
+					 "FROM   VOTE V  " + 
+					 "       JOIN VOTERESULT R  " + 
+					 "         ON( V.V_NO = R.VR_NO )  " + 
+					 "WHERE  V.V_C_NO = ? ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Vote vote = new Vote();
+				vote.setVoteNo(rs.getInt("v_no"));
+				vote.setVoteTitle(rs.getString("v_title"));
+				vote.setVoteStartDate(rs.getDate("v_start_date"));
+				vote.setVoteEndDate(rs.getDate("v_end_date"));
+				vote.setVoteResultNo(rs.getInt("count")); // 투표자 수 
+				voteList.add(vote);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return voteList;
+	}
+	
 	
 }
 

@@ -34,10 +34,10 @@
                                    			<td>1</td>
                                    			<td style="text-align: left"><a href="/acanity/admin/qna/detail?no=<%= qna.getpNo() %>"><%= qna.getpTitle() %></a></td>
                                    			<td><%= qna.getpId() %></td>
-											<% if(qna.getDepth() % 2 == 1) {%>
-                                   			<td><i class="fa fa-times" aria-hidden="true"></i></td>
+											<% if(qna.getOriginalFileName().equals("Y")) {%>
+												<td><i class="fa fa-check" aria-hidden="true"></i></td>
                                    			<% } else { %>
-                                   			<td><i class="fa fa-check" aria-hidden="true"></i></td>
+												<td><i class="fa fa-times" aria-hidden="true"></i></td>                                   			
                                    			<% } %>
                                    			<td><%= qna.getReadCount() %></td>
                                    			<td><%= qna.getpDate() %></td>

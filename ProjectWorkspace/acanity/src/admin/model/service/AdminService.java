@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import History.model.vo.History;
 import admin.model.dao.AdminDao;
 import community.model.vo.Community;
+import community.model.vo.Vote;
 import member.model.vo.Member;
 import post.model.vo.Post;
 
@@ -285,6 +286,23 @@ public class AdminService {
 			commit(con);
 		else
 			rollback(con);
+	}
+
+	// QnA 답변 등록
+	public void qnaInsert(int no, String content) {
+		Connection con = getConnection();
+		new AdminDao().qnaInsert(con, no, content);
+		commit(con);
+	}
+
+	// 그룹에서 진행된 투표리스트 출력
+	public ArrayList<Vote> communityVoteAll(int no) {
+		Connection con = getConnection();
+		ArrayList<Vote> voteList = new AdminDao().communityVoteAll(con, no);
+		
+		close(con);
+		
+		return voteList;
 	}
 	
 	

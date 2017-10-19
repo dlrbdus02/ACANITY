@@ -2,6 +2,7 @@
     import="java.util.*, post.model.vo.Post"%>
 <%
 	ArrayList<Post> qnaList = (ArrayList<Post>)request.getAttribute("qnaList");
+	int no = 0;
 	String pageName = "Q & A Detail";
 %>
 <!doctype html>
@@ -20,7 +21,10 @@
                             <div class="content">
                                 <form>
                                 <% for(Post qna : qnaList) { %>
-                                <% if(qna.getDepth() == 1) {%>
+                                <% if(qna.getDepth() == 1) {
+                                	no = qna.getpNo();
+                               	%>
+                                
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group">
@@ -74,15 +78,14 @@
                                         </div>
                                     </div>
                                     <% } else {%>
-                                    </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                             <label>
-                                            	<% for(int i = 0; qna.getDepth() > 0; i++){ %>
+                                            	<% for(int i = 1; qna.getDepth() > i; i++){ %>
                                             	<i class="fa fa-share" aria-hidden="true"></i> &nbsp;
                                             	<% } %>
-                                            : <%= qna.getpTitle() %></label>
+                                            : &nbsp; <%= qna.getpTitle() %></label>
                                                 <textarea rows="5" class="form-control border-input" placeholder="Here can be your description"><%= qna.getpContent() %></textarea>
                                             </div>
                                         </div>
@@ -93,7 +96,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                             	<label>Reply</label>
-                                            	<textarea rows="5" class="form-control border-input" placeholder="Here can be your description"></textarea>
+                                            	<textarea id="content" rows="5" class="form-control border-input" placeholder="Here can be your description"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -123,9 +126,9 @@ function reply(){
 }
 
 function replyAction(){
-	location.href = "https://www.naver.com/";
+	var content = $("#content").val();
+	location.href = "/acanity/admin/qna/insert?no=" + <%= no %> + "&content=" + content;
 }
-
 </script>
 <%@ include file="footer.jsp" %>
 </html>

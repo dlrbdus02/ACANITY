@@ -163,11 +163,11 @@
                     <div class="col-lg-4 col-md-5">
                         <div class="card card-user">
                             <div class="image" style="overflow: hidden;">
-                                <img src="/acanity/image/background.jpg" alt="..." style="overflow: hidden;"/>
+                                <img src="/acanity/img/admin/dog1.jpg" alt="..." style="overflow: hidden;"/>
                             </div>
                             <div class="content">
                                 <div class="author">
-                                  <img class="avatar border-white" src="/acanity/image/faces/face-2.jpg" alt="..." style="width: 150px; height: 150px"/> <!-- 그룹 이미지 -->
+                                  <img class="avatar border-white" src="/acanity/img/admin/dog3.jpg" alt="..." style="width: 150px; height: 150px"/> <!-- 그룹 이미지 -->
                                   <h4 class="title">그룹명<br />
                                      <small style="font-size: 20px">Attendance rate</small>
                                   </h4>
