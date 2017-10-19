@@ -82,4 +82,11 @@ public class SharePostService {
          rollback(conn);
       close(conn);
    }
+   
+   public int getMaxNumber(){
+	   Connection conn = getConnection();
+	   int no = new SharePostDao().getMaxNumber(conn, cno);
+	   close(conn);
+	   return no;
+   }
 }
