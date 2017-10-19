@@ -10,18 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 import post.model.service.SharePostService;
 import post.model.vo.Post;
 
-@WebServlet("/spupdate")
-public class SharePostUpdateServlet extends HttpServlet {
+@WebServlet("/spdetail")
+public class SharePostDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public SharePostUpdateServlet() {
+
+    public SharePostDetailServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 파일 공유 게시판 : 게시글, 댓글 수정 처리용 컨트롤러
-		Post post = null;
-		int result = new SharePostService().updatePost(post);
+		// 파일 공유 게시판 : 게시글 상세보기 처리용 컨트롤러
+		
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		// 조회수 1 증가 처리
+		new SharePostService().addReadCount(no);
+		Post post = new SharePostService().selectPost(no);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

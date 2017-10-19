@@ -11,9 +11,41 @@ public class SharePostDao {
    //Constructor : default
    public SharePostDao(){}
 
-   public ArrayList<Post> selectList(Connection conn) {
+   public ArrayList<Post> selectList(Connection conn, int cno) {
       // 게시글 리스트 조회
-      return null;
+	   PreparedStatement pstmt = null;
+	   ResultSet rset = null;
+	   ArrayList<Post> list = new ArrayList<Post>();
+	   
+	   String query = "select p_no, p_title, p_id, p_date, p_readcount "
+			   		+ "from post "
+			   		+ "where p_code = ? and p_depth = ? and c_no = ? "
+			   		+ "order by p_no desc";
+	   
+	   try {
+		pstmt = conn.prepareStatement(query);
+		pstmt.setInt(1, 2);
+		pstmt.setInt(2, 1);
+		pstmt.setInt(3, cno);
+		rset = pstmt.executeQuery();
+		
+		while(rset.next()){
+			Post post = new Post();
+			post.setpNo(rset.getInt(1));
+			post.setpTitle(rset.getString(2));
+			post.setpId(rset.getString(3));
+			post.setpDate(rset.getDate(4));
+			post.setReadCount(rset.getInt(5));
+			list.add(post);
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		close(pstmt);
+		close(rset);
+	}
+      return list;
    }
 
    public ArrayList<Post> selectSearch(Connection conn, String title) {
