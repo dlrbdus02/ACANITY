@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import History.model.vo.History;
 import admin.model.dao.AdminDao;
 import community.model.vo.Community;
+import community.model.vo.Vote;
 import member.model.vo.Member;
+import post.model.vo.Post;
 
 public class AdminService {
 
@@ -244,5 +246,65 @@ public class AdminService {
 		
 		return memberList;
 	}
+
+	// 전체 QnA 게시글 출력
+	public ArrayList<Post> qnaAll() {
+		Connection con = getConnection();
+		ArrayList<Post> qnaList = new AdminDao().qnaAll(con);
+		
+		close(con);
+		
+		return qnaList;
+	}
+
+	// QnA 게시글 수
+	public int qnaCount() {
+		Connection con = getConnection();
+		int result = new AdminDao().qnaCount(con);
+		
+		close(con);
+		
+		return result;
+	}
+
+	// QnA 상세보기
+	public ArrayList<Post> qnaDetail(int no) {
+		Connection con = getConnection();
+		ArrayList<Post> qnaList = new AdminDao().qnaDetail(con, no);
+		
+		close(con);
+		
+		return qnaList;
+	}
+
+	// QnA 조회수 증가
+	public void qnaRead(int no) {
+		Connection con = getConnection();
+		int result = new AdminDao().qnaRead(con, no);
+		
+		if(result > 0)
+			commit(con);
+		else
+			rollback(con);
+	}
+
+	// QnA 답변 등록
+	public void qnaInsert(int no, String content) {
+		Connection con = getConnection();
+		new AdminDao().qnaInsert(con, no, content);
+		commit(con);
+	}
+
+	// 그룹에서 진행된 투표리스트 출력
+	public ArrayList<Vote> communityVoteAll(int no) {
+		Connection con = getConnection();
+		ArrayList<Vote> voteList = new AdminDao().communityVoteAll(con, no);
+		
+		close(con);
+		
+		return voteList;
+	}
+	
+	
 
 }

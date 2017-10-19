@@ -51,13 +51,15 @@ public class MemberDetailServlet extends HttpServlet {
 		int meetingCount = service.memberMeetingCount(id);
 		int keyGroupRate = service.memberKeyGroupRate(id);
 		
+		System.out.println("타마마 : " + communityList);
+		
 	    JSONObject json = new JSONObject();
 	    JSONArray names = new JSONArray();
 	    JSONArray value = new JSONArray();
 	    
 		for (Community community : communityList) {
-			names.add(community.getcName());
-			value.add(service.memberMeetingRate(id, community.getcNo()));
+			names.add(community.getCommunityName());
+			value.add(service.memberMeetingRate(id, community.getCommunityNo()));
 		}
 		
 		json.put("names", names);
