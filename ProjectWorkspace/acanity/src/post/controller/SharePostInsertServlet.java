@@ -14,10 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 import post.model.service.SharePostService;
 import post.model.vo.Post;
@@ -61,7 +60,7 @@ public class SharePostInsertServlet extends HttpServlet {
 		String content = multi.getParameter("content");
 		String pwd = multi.getParameter("pwd");
 
-		String originalFileName = mrequest.getFilesystemName("upfile");
+		String originalFileName = multi.getFilesystemName("upfile");
 		Post p = null;
 		// Enumeration files = multi.getFileNames();
 		// while(files.hasMoreElements()){
@@ -72,8 +71,8 @@ public class SharePostInsertServlet extends HttpServlet {
 					+ originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
 
 			// 업로드되어 있는 원래 파일의 이름을 새 이름으로 바꾸기
-			File originalFile = new File(savePath + "\\" + originalFileName);
-			File renameFile = new File(savePath + "\\" + renameFileName);
+			File originalFile = new File(uploadPath + "\\" + originalFileName);
+			File renameFile = new File(uploadPath + "\\" + renameFileName);
 
 			// 파일이름 바꾸기 실행 >> 실패시 직접 바꾸기함
 			// 새 파일 만들고, 원래 파일의 내용 읽어서 복사 기록하고
