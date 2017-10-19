@@ -67,7 +67,7 @@ public class CommunityService {
 		return result;
 	}
 
-	public int deleteBoard(int cnum) {
+	public int deleteCommunity(int cnum) {
 		Connection con = getConnection();
 		int result = new CommunityDao().deleteBoard(con, cnum);
 		if(result > 0)

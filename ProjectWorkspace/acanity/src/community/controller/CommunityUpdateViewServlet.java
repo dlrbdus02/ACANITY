@@ -2,6 +2,7 @@ package community.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,18 @@ public class CommunityUpdateViewServlet extends HttpServlet {
 		int currentPage = Integer.parseInt(request.getParameter("page"));
 		
 		Community community = new CommunityService().selectCommunity(cnum);
+		
+		RequestDispatcher view = null;
+		if(community != null) {
+			view = request.getRequestDispatcher("views/community/communityUpdateView.jsp");
+			request.setAttribute("community", community);
+			request.setAttribute("currentPage", currentPage);
+			view.forward(request, response);
+		} else {
+			view = request.getRequestDispatcher("views/community/communityError.jsp");
+			request.setAttribute("message", "수정페이지 출력 요청 실패!");
+			view.forward(request, response);
+		}
 	}
 
 	/**
