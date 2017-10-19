@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>shareListView</title>
-<link rel="stylesheet" href="sharepost.css">
+<link rel="stylesheet" href="../../css/sharepost.css">
 <script type="text/javascript">
 	function postWrite(){
 		location.href = "shareWriteForm.jsp?cno=<%=cno%>";

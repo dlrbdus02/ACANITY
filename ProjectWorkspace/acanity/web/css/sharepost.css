@@ -156,16 +156,110 @@ body{
 	border-radius: 6px;
 }
 
+#write_box3{
+	width: 98%;
+	height: 33px;
+	padding-left: 2px;
+	padding-top: 10px;
+	background-color: #525c6d;
+	color: white;
+	font-size: 11pt;
+}
+
+#write_box1{
+	width: 98%;
+	height: 220px;
+	background-color: #b8c7d3;
+	border: 1px solid #525c6d;
+	margin-top: -2px;
+}
+
+#write_box1_sub1{
+	width: 70%;
+	height: 220px;
+	background-color: white;
+	font-size: 11pt;
+	display: inline-block;
+	float: left;
+}
+
+#write_box1_sub2{
+	width: 22%;
+	height: 160px;
+	font-size: 11pt;
+	display: inline-block;
+	float: left;
+	border-bottom-color: #525c6d;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	background-color: white;
+}
+
+#write_box2{
+	width: 98%;
+	height: 40px;
+	background-color: white;
+	margin-top: 12px;
+	text-align: center;
+}
+
 #write_button1{
 	height: 40px;
-	width: 130px;
+	width: 110px;
 	text-align: center;
-	font-size: 12pt;
+	font-size: 14pt;
 	font-weight: bold;
 	color: #ffffff;
+	padding-top: 5px;
 	background-color: #0054a8;
 	border-style: solid;
 	border-color: #0054a8;
 	border-bottom-width: 4px;
 	border-radius: 6px;
+}
+
+#write_table1{
+	width: 100%;
+	text-align: center;
+	color: #525c6d;
+}
+
+#write_table1 td {
+	border: 1px solid #525c6d;
+	height: 32px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+#write_table1 th {
+	border: 1px solid #525c6d;
+	height: 32px;
+	border-left-width: 0px;
+	background-color: #b8c7d3;
+	font-weight: normal;
+	text-align: center;
+}
+
+#write_table2{
+	width: 100%;
+	text-align: center;
+	background-color: white;
+}
+
+#write_table2 td {
+	border: 1px solid #b8c7d3;
+	height: 32px;
+}
+
+#write_span1{
+	font-size: 12pt;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+#write_span2{
+	font-size: 10pt;
+	margin-left: 77%;
+	margin-top: 2px;
+	position: fixed;
 }
