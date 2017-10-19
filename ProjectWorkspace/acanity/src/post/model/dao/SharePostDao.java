@@ -79,5 +79,23 @@ public class SharePostDao {
       return 0;
    }
 
-
+	public int getMaxNumber(Connection conn, int cno) {
+		// 게시물 다음 번호 조회
+		Statement stmt = null;
+		ResultSet rset = null;
+		int no = 0;
+		
+		String query = "select max(p_no) from post "
+				+ "where p_code = 2 and p_depth = 1 and cno = " + cno;
+		
+		try {
+			rset = stmt.executeQuery(query);
+			no = rset.getInt(1) + 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return no;
+	}
+	
 }
