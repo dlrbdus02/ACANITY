@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title>shareListView</title>
-<link rel="stylesheet" href="../../css/sharepost.css">
+<link rel="stylesheet" href="sharepost.css">
 <script type="text/javascript">
 	function postWrite(){
 		location.href = "shareWriteForm.jsp?cno=<%=cno%>";
@@ -36,22 +36,28 @@
 					<td style="border-top-width: 0;">123</td></tr>
 				<tr><th>작성자</th>
 					<td>123</td></tr>
-				<tr height="117"><th>내용</th>
+				<tr height="152"><th>내용</th>
 					<td>231</td></tr>
-				<tr><th>비밀번호</th>
-					<td>23</td></tr>
 				<!-- 게시물 수정 시 입력할 비밀번호입니다. -->
 			</table>
 		</div>
+		<div id="write_box1_sub2_1">
+		<span id="write_span4">
+		자료공유방은 모임원의 소중한 자료를 공유하는 공간입니다.
+		아래의 <b>게시글 작성 시 주의사항</b>을 꼭 읽어주세요.<br></span>
+		</span>
+		<span id="write_span3">
+		① 타인에 대한 비방이나 비속어는 자제해주세요.<br>
+		② 불필요한 개인정보는 포함하지 말아주세요.<br>
+		③ 의미없는 게시글을 도배하지 말아주세요.<br>
+		④ 불건전한 게시물은 관리자에 의해 무통보 삭제처리될 수 있습니다.<br>
+		</div>
 		<div id="write_box1_sub2">
-		파일 목록
-		<!-- <table id="write_table2" cellspacing="0" style="border-collapse : collapse;">
-		<tr><td width="8%"></td>
-			<td width="46%" style="text-align: left; padding-left: 6px"></td>
-			<td width="15%"></td>
-			<td width="17%"></td>
-			<td width="9%"></td></tr>
-		</table> -->
+			<input type="file" id="write_file1" multiple>
+		</div>
+		<div id="write_box1_sub2_2">
+		<label for="pwd" id="write_label">비밀번호</label>
+		<input type="password" name="pwd" id="write_inputpass" size="28" placeholder=" 게시글 수정 시 필요합니다.">
 		</div>
 	</div>
 	<div id="write_box2">

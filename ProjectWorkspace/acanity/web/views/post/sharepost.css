@@ -169,13 +169,13 @@ body{
 #write_box1{
 	width: 98%;
 	height: 220px;
-	background-color: #b8c7d3;
+	background-color: white;
 	border: 1px solid #525c6d;
 	margin-top: -2px;
 }
 
 #write_box1_sub1{
-	width: 70%;
+	width: 60%;
 	height: 220px;
 	background-color: white;
 	font-size: 11pt;
@@ -184,26 +184,74 @@ body{
 }
 
 #write_box1_sub2{
-	width: 22%;
-	height: 160px;
-	font-size: 11pt;
+	width: 37%;
+	height: 29px;
 	display: inline-block;
 	float: left;
-	margin-top: 10px;
-	margin-left: 10px;
+	font-size: 10pt;
+	margin-left: 9px;
 	position: relative;
-	border-bottom-color: #525c6d;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	background-color: white;
+	border: 1px solid #525c6d;
+	background-color: #d1dbe2;
+	overflow: hidden;
 }
 
+#write_box1_sub2_1{
+	width: 37%;
+	height: 132px;
+	display: inline-block;
+	float: left;
+	font-size: 9pt;
+	margin-top: 10px;
+	margin-left: 9px;
+	position: relative;
+	background-color: white;
+	overflow: hidden;
+	color: #5e7488;
+}
+
+#write_box1_sub2_2{
+	width: 37%;
+	height: 29px;
+	display: inline-block;
+	float: left;
+	margin-top: 8px;
+	margin-left: 9px;
+	position: relative;
+	border: 1px solid #525c6d;
+	background-color: #f4e7dd;
+	overflow: hidden;
+}
 #write_box2{
 	width: 98%;
 	height: 40px;
 	background-color: white;
 	margin-top: 12px;
 	text-align: center;
+}
+
+#write_label{
+	margin-left: 7px;
+	margin-right: 9px;
+	font-size: 10pt;
+	display: inline-block;
+	float: left;
+	margin-top: 5px;
+}
+
+#write_inputpass{
+	font-size: 8pt;
+	height: 16px;
+	display: inline-block;
+	float: left;
+	margin-top: 4px;
+}
+
+#write_file1{
+	font-size: 10pt;
+	margin: 2px;
+	display: block;
+	float: left;
 }
 
 #write_button1{
@@ -238,7 +286,7 @@ body{
 	border: 1px solid #525c6d;
 	height: 32px;
 	border-left-width: 0px;
-	background-color: #b8c7d3;
+	background-color: #d1dbe2;
 	font-weight: normal;
 	text-align: center;
 }
@@ -265,4 +313,12 @@ body{
 	margin-left: 77%;
 	margin-top: 2px;
 	position: fixed;
+}
+
+#write_span3{
+	font-size: 8pt;
+}
+
+#write_span4{
+	font-size: 7pt;
 }
