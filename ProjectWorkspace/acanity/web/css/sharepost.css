@@ -189,6 +189,8 @@ body{
 	font-size: 11pt;
 	display: inline-block;
 	float: left;
+	margin-top: 10px;
+	position: relative;
 	border-bottom-color: #525c6d;
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
