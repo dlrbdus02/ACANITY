@@ -217,7 +217,8 @@
                                                     	<%= vote.getVoteResultNo() %>명
                                                     </div>
                                                     <div class="col-xs-2 text-right">
-                                                    	<btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    <btn class="btn btn-sm btn-success btn-icon" onclick="viewChart(<%= vote.getVoteNo() %>)"><i class="fa fa-envelope"></i></btn>
+                                                    	<%-- <button class="btn btn-sm btn-success btn-icon" onclick="viewChart(<%= vote.getVoteNo() %>)"><i class="fa fa-envelope"></i></button> --%>
                                                     </div>
                                                 </div>
                                             </li>
@@ -233,7 +234,7 @@
                                                     	<%= vote.getVoteResultNo() %>명
                                                     </div>
                                                     <div class="col-xs-2 text-right">
-                                                    	<btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    	<btn class="btn btn-sm btn-success btn-icon" onclick="viewChart(<%= vote.getVoteNo() %>)"><i class="fa fa-envelope"></i></btn>
                                                     </div>
                                                 </div>
                                             </li>
@@ -249,7 +250,7 @@
                                                     	<%= vote.getVoteResultNo() %>명
                                                     </div>
                                                     <div class="col-xs-2 text-right">
-                                                    	<btn class="btn btn-sm btn-success btn-icon"><i class="fa fa-envelope"></i></btn>
+                                                    	<btn class="btn btn-sm btn-success btn-icon" onclick="viewChart(<%= vote.getVoteNo() %>)"><i class="fa fa-envelope"></i></btn>
                                                     </div>
                                                 </div>
                                             </li>
@@ -258,11 +259,40 @@
                             </div>
                             </div>
                         </div>
+                        
+                        <div class="col-lg-4 col-md-4">
+                        <div class="card" id="voteResult" style="display: none">
+                         <div class="header">
+                                <h4 class="title">Vote List</h4>
+                            </div>
+                            <div class="content" id="voteChart">
+                            	
+                            </div>
+                        </div>
+                        
+                    </div>
                         </div>
                         
                         
             </div>
         </div>
-<%@ include file="footer.jsp" %>
+<script type="text/javascript">
+function viewChart(no){
+	$.ajax({
+		url: "/acanity/admin/community/chart?no=" + no,
+		type: "post",
+		success: function(data){
+			$("#voteResult").attr("style", "display: block");
+			$("#voteChart").html(data);
+			view();			
+		},
+		error: function(data){
+			console.log("에러 발생 : " + data);
+		}
+	});
+}
+</script>
 
+
+<%@ include file="footer.jsp" %>
 </html>
