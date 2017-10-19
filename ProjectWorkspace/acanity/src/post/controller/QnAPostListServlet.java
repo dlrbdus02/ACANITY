@@ -1,6 +1,8 @@
 package post.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +28,19 @@ public class QnAPostListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html; charset=utf-8");
+		
+		ArrayList<Post> list = new QnAPostService().selectList();
+		RequestDispatcher view = null;
+		if(list != null){
+			view = request.getRequestDispatcher("views/QnApost/QnAPostListView.jsp");
+			request.setAttribute("list", list);
+			view.forward(request, response);
+		}else{
+			view = request.getRequestDispatcher("views/QnApost/QnAPostError.jsp");
+			request.setAttribute("message", "QnA전체 조회 실패");
+			view.forward(request, response);
+		}
 	}
 
 	/**
