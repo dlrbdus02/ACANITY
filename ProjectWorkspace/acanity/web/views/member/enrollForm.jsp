@@ -4,86 +4,88 @@
 <!-- navbar -->
 <%@ include file="/header.jsp"%>
 <script type="text/javascript">
-	var checkFirst = false;
-	var lastKeyWord='';
-	var loopSendKeyword = false;
-	
-	function checkId() {
-		if(checkFirst == false){
-			//0.5초 후에 sendKeyword()함수 실행
-			setTimeout("sendId();", 500);
-			loopSendKeyword = true;
-		}
-		checkFirst = true;
-	}
-	
-	function checkPwd(){
-		var f1 = document.forms[0];
-		var pw1 = f1.m_pw.value;
-		var pw2 = f1.m_pw2.value;
-		
-		if(pw1!=pw2){
-			document.getElementById('checkPwd').style.color = "red";
-			documemt.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요.";
-		}else{
-			document.getElementById('checkPwd').style.color = "black";
-			document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다";
-		}
-	}
-	
-	function sendId() {
-		  if (loopSendKeyword == false) return;
-		  
-		  var keyword = document.search.m_id.value;
-		  if (keyword == '') {
-		   lastKeyword = '';
-		   document.getElementById('checkMsg').style.color = "black";
-		   document.getElementById('checkMsg').innerHTML = "아이디를 입력하세요.";
-		  } else if (keyword != lastKeyword) {
-		   lastKeyword = keyword;
-		   
-		   if (keyword != '') {
-		    var params = "id="+encodeURIComponent(keyword);
-		    sendRequest("#", params, displayResult, 'POST');
-		   } else {
-		   }
-		  }
-		  setTimeout("sendId();", 500);
-		 }
-		 
-		 
-		 function displayResult() {
-		  if (httpRequest.readyState == 4) {
-		   if (httpRequest.status == 200) {
-		    var resultText = httpRequest.responseText;
-		    var listView = document.getElementById('checkMsg');
-		    if(resultText==0){
-		     listView.innerHTML = "사용 할 수 있는 ID 입니다";
-		     listView.style.color = "blue";
-		    }else{
-		     listView.innerHTML = "이미 등록된 ID 입니다";
-		     listView.style.color = "red";
-		    }
-		   } else {
-		    alert("에러 발생: "+httpRequest.status);
-		   }
-		  }
-		 }
-		
 
+	function checkValue(){
+		
+		var form = document.userInfo;
+		
+		if(!form.m_id.value){
+			alert("아이디를 입력하세요.");
+			return false;
+		}
+		
+		if(form.idDuplication.value != "idCheck"){
+			alert("아이디 중복체크를 해주세요.");
+			return false;
+		}
+		
+		if(!form.m_name.value){
+			alert("이름를 입력하세요.");
+			return false;
+		}
+		
+		if(!form.m_pw.value){
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+		
+		if(!form.m_pw.value != form.m_pwcheck.value){
+			alert("비밀번호를 동일하게 입력하세요.");
+			return false;
+		}
+		
+		if(!form.m_tel.value){
+			alert("전화번호를 입력하세요.");
+			return false;
+		}
+		
+		if(isNaN(form.m_tel.value)){
+			alert("전화번호는 숫자만 입력 가능합니다.");
+			return false;
+		}
+		
+		if(!form.m_email.value){
+			alert("이메일을 입력하세요.");
+			return false;
+		}
+		if(!form.m_time.value){
+			alert("수업타임을 선택하세요.");
+			return false;
+		}
+		if(!form.m_class.value){
+			alert("클래스를 선택하세요.");
+			return false;
+		}
+		
+		
+	}
 
+	
+	//아이디 입력창에 값 입력시 hidden으로 idUncheck 셋팅한다 
+	//중복 체크 후 다시 아이디 창에 새로운 아이디를 입력했을 때 다시 중복체크를 진행하기 위함이다.
+	function openIdchk(){
+		
+		window.name = "parentForm";
+		window.open("/acanity/views/member/IdCheckForm.jsp", "chkForm", "width=500, height=300, resizable = no, scrollbars = no");
+	}
+	function inputIdchk(){
+		document.userInfo.idDuplication.value="idUncheck";
+	}
 </script>
 <section id="join" class="section orange">
 	<h2 align="center">회원 가입 페이지</h2>
 	<br>
 	<!-- 웹에서의 절대경로 : "/context root명/대상경로/파일명.확장자" -->
 
-	<form action="/acanity/menroll" method="post">
+	<form action="/acanity/menroll" method="post" id="join-form" name="userInfo" onsubmit="return checkValue()">
 		<table align="center" width="600" height="350">
 			<tr>
 				<th width="150">아이디</th>
-				<td width="450"><input type="text" name="m_id" id="m_id"  value="">
-				<div id="checkMsg">아이디를 입력하세요</div></td>
+				<td width="450">
+				<input type="text" name="m_id" id="m_id" value="" onkeydown="inputIdChk()">
+				<input type="button" class="btn banner"	onclick="openIdchk()" value="ID 중복확인" />
+				<input type="hidden" name="idDuplication" value="idUncheck">
+				</td>
 			</tr>
 			<tr>
 				<th>이 름</th>
@@ -95,13 +97,13 @@
 			</tr>
 			<tr>
 				<th>암호확인</th>
-				<td><input type="password" name="m_pw2">
-				<div id="checkPwd">동일한 암호를 입력하세요.</div></td>
+				<td><input type="password" name="m_pwcheck"></td>
 			</tr>
 			<td><br></td>
 			<tr>
 				<th>전화번호</th>
-				<td><input type="tel" name="m_tel" value=""></td>
+				<td><input type="tel" name="m_tel" value=""
+					placeholder="'-'제외하고 숫자만 입력"></td>
 			</tr>
 			<tr>
 				<th>이메일</th>

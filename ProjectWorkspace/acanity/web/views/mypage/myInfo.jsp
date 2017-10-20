@@ -40,12 +40,39 @@
 			</tr>
 			<tr>
 				<th>시간</th>
-				<td><input type="text" name="mtime" value="<%= member.getmTime() %>" readonly></td>
+				<% if(member.getmTime().equals("오전")){ %>
+				<td>
+				<input type="radio" name="mtime" value="오전" checked readonly>오전
+				<input type="radio" name="mtime" value="오후" readonly>오후
+				</td>
+				<% }else{ %>
+				<td>
+				<input type="radio" name="mtime" value="오전"  readonly>오전
+				<input type="radio" name="mtime" value="오후" checked readonly>오후
+				</td>
+				<%} %>
 			</tr>
 
 			<tr>
 				<th>클래스</th>
-				<td><input type="text" name="mclass" value="<%= member.getmClass() %>" readonly></td>
+				<% if(member.getmClass().equals("A")){ %>
+				<td>
+				<input type="radio" name="mclass" value="A" checked readonly>A
+				<input type="radio" name="mclass" value="B"  readonly>B
+				<input type="radio" name="mclass" value="C"  readonly>C
+				<input type="radio" name="mclass" value="D"  readonly>D
+				<input type="radio" name="mclass" value="E"  readonly>E
+				<input type="radio" name="mclass" value="F"  readonly>F
+				<input type="radio" name="mclass" value="G"  readonly>G
+				<input type="radio" name="mclass" value="H"  readonly>H
+				<input type="radio" name="mclass" value="I"  readonly>I
+				</td>
+				<% }else{ %>
+				<td>
+				<input type="radio" name="mclass" value="B" checked readonly>B
+				</td>
+				
+				<%} %>
 			</tr>
 			<tr>
 				<td><br></td>

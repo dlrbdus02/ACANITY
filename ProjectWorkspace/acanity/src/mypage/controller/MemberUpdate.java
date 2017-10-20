@@ -39,14 +39,14 @@ public class MemberUpdate extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		String mid = request.getParameter("mid");
-		//String mpw = request.getParameter("mpw");
+		String mpw = request.getParameter("mpw");
 		String mname = request.getParameter("mname");
 		String mtel = request.getParameter("mtel");
 		String memail = request.getParameter("memail");
-		//String mtime = request.getParameter("mtime");
-		//String mclass = request.getParameter("mclass");
+		String mtime = request.getParameter("mtime");
+		String mclass = request.getParameter("mclass");
 		
-		Member member = new Member( mid, mname, mtel, memail);
+		Member member = new Member( mid, mpw, mname, mtel, memail, mtime, mclass);
 		System.out.println(member+ " =");
 		int result = new MypageService().updateMember(member);
 		System.out.println(result+ " =");
