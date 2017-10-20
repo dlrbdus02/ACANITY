@@ -25,7 +25,7 @@
 					<%}else{ %>
 					<li><a title="logout" href="/acanity/logout">Logout</a></li>
 					<%} %>
-					<li><a title="board" href="#">모임</a></li>
+					<li><a title="board" href="/acanity/views/community/communityListView.jsp">모임</a></li>
 					<li><a title="post" href="#">모임게시판</a>
 					<li><a title="mypage" href="/acanity/views/mypage/mypageMain.jsp">마이페이지</a></li>
 					<li><a title="qna" href="/acanity/qnalist">Q&A</a></li>
