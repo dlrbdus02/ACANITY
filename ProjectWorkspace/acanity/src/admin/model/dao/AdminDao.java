@@ -406,7 +406,7 @@ public class AdminDao {
 				history.setChDate(rs.getDate("c_h_date"));
 				history.setChNo(rs.getInt("c_h_no"));
 				history.setChPlace(rs.getString("c_h_place"));
-				history.setChTime(rs.getDate("c_h_time"));
+				/*history.setChTime(rs.getDate("c_h_time")); 나중에 처리하기*/ 
 				meetingList.add(history);
 			}
 			
@@ -861,6 +861,38 @@ public class AdminDao {
 			close(pstmt);
 		}
 		
+		return voteList;
+	}
+	
+	// 투표 항목별 값 차트
+	public ArrayList<Vote> voteResultChart(Connection con, int no) {
+		ArrayList<Vote> voteList = new ArrayList<Vote>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT VR_SELECT,  " + 
+				     "       COUNT(*) count  " + 
+				     "FROM   VOTERESULT  " + 
+				     "WHERE  VR_NO = ?  " + 
+				     "GROUP  BY VR_SELECT";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Vote vote = new Vote();
+				vote.setVoteItemSelect(rs.getString("vr_select"));
+				vote.setVoteResultNo(rs.getInt("count")); // 항목에 투표한 사람의 수 
+				voteList.add(vote);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		System.out.println(voteList);
+		System.out.println(voteList.size());
 		return voteList;
 	}
 	

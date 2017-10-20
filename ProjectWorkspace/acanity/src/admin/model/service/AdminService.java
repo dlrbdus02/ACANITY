@@ -304,6 +304,16 @@ public class AdminService {
 		
 		return voteList;
 	}
+
+	// 투표 항목별 값 차트
+	public ArrayList<Vote> voteResultChart(int no) {
+		Connection con = getConnection();
+		ArrayList<Vote> voteList = new AdminDao().voteResultChart(con, no);
+		
+		close(con);
+		
+		return voteList;
+	}
 	
 	
 
